@@ -4,12 +4,14 @@
 >It's a linux kernel module, and the main function of this module is to help you statistic your count in your module.
 
 ## 1.Design and Implement your own data strucrure
+<ul>
 <li>\#define SLOT_LEN 10</li>
 <li>typedef struct my_common_stat {</li>
 <li>  struct slot_common common;</li>
 <li>  atomic64_t slots[SLOT_LEN];</li>
 <li>}my_common_stat_t;</li>
 <li>If you just want to use the basic function of this module, you can just use common_slot_stat_t to define your varialbe.</li>
+</ul>
 
 ##2. Dfine your variable
 <li>struct a {</li>
