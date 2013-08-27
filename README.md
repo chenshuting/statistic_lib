@@ -4,7 +4,7 @@
 >It's a linux kernel module, and the main function of this module is to help you statistic your count in your module.
 
 ## 1.Design and Implement your own data strucrure
->#define SLOT_LEN 10
+>\#define SLOT_LEN 10
 >typedef struct my_common_stat {
 >  struct slot_common common;
 >  atomic64_t slots[SLOT_LEN];
