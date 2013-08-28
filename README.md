@@ -29,7 +29,7 @@
 <ul><li>inc_common_statistic((void *)&my_variable, amount);</li></ul>
 
 ##5. fill buffer to print or other use
-<ul><li>print_common_statistic((void *)&asd->finish, buf, buf_size);</li></ul>
+<ul><li>fill_common_statistic((void *)&asd->finish, buf, buf_size);</li></ul>
 
 ##6. Modify Makefile
 ###Add include head file
