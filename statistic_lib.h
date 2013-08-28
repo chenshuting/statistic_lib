@@ -26,7 +26,7 @@
 #include <asm/spinlock_types.h>
 #include <asm/spinlock.h>
 
-#define DESCRIPTION_LEN 16
+#define DESCRIPTION_LEN 32
 #define UNIT_LEN 8 
 #define KLOG_TITLE      "K"
 #define STAT_NAME "STATISTIC_LIB"
@@ -78,6 +78,6 @@ typedef struct common_slot_stat {
 
 void init_common_statistic(void *, int, char *, policy_type_t, int , char *);
 void inc_common_statistic(void *, unsigned long long);
-int print_common_statistic(void *, char *, unsigned int);
+int fill_common_statistic(void *, char *, unsigned int);
 
 #endif
