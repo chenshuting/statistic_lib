@@ -41,7 +41,9 @@ inline int amount_2_offset(unsigned int amount, policy_type_t policy,
 {
 	int offset = -1, number = 0;
 
-	X_ASSERT(step > 0);	
+	if (slot_number <= 0 || step == 0) {
+		return offset;
+	}
 
 	switch(policy){
 	case ARITHMETIC_PROGRESSION:
@@ -124,7 +126,8 @@ void inc_common_statistic(void *obj, unsigned long long amount)
 		spin_unlock_irqrestore(&common->lock, flag);
 	}
 
-	atomic64_inc(&stat->slots[offset]);
+	if (offset >= 0)
+		atomic64_inc(&stat->slots[offset]);
 	atomic64_inc(&common->total_cnt);
 	atomic64_add(amount, &common->total_amount);
 }
@@ -141,7 +144,7 @@ EXPORT_SYMBOL(inc_common_statistic);
  	len: The length of filled buffer
 */
 //TODO:modify name
-int print_common_statistic(void *obj, char *buf, unsigned int buf_size)
+int fill_common_statistic(void *obj, char *buf, unsigned int buf_size)
 {
 	common_slot_stat_t *stat = (common_slot_stat_t *)obj;
 	slot_common_t *common = &stat->common;
@@ -149,7 +152,7 @@ int print_common_statistic(void *obj, char *buf, unsigned int buf_size)
 	unsigned long flag, average = 0, total_cnt = 0;
 
 	//print the description information
-	len = snprintf(buf, buf_size - len, "------- %s slot info: -------\n", common->description);
+	len = snprintf(buf, buf_size - len, "------- %s info: -------\n", common->description);
 
 	//print slots except the last slots
 	for (i = 0; i < common->slot_number - 1; i++) {
@@ -187,4 +190,4 @@ int print_common_statistic(void *obj, char *buf, unsigned int buf_size)
 	
 	return len;
 }
-EXPORT_SYMBOL(print_common_statistic);
+EXPORT_SYMBOL(fill_common_statistic);
