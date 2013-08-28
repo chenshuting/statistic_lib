@@ -55,6 +55,7 @@ enum{
 typedef enum{
 	ARITHMETIC_PROGRESSION,
 	GEOMETRIC_PROGRESSOIN,
+	NO_PROGRESSION,
 }policy_type_t;
 
 typedef struct slot_common {
