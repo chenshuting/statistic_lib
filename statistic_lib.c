@@ -55,8 +55,8 @@ inline int amount_2_offset(unsigned int amount, policy_type_t policy,
 			number /= step;
 		}
 		break;
+	case NO_PROGRESSION:
 	default:
-		BUG();
 		break;
 	}
 	return (offset >= slot_number ? (slot_number - 1) : offset);
